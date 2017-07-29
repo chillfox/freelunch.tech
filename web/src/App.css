@@ -1,4 +1,13 @@
 .App {
   text-align: center;
+  display: flex;
 }
 
+.CoolMap {
+  flex: 1;
+  align-items: stretch;
+}
+
+.CoolMapMenu {
+
+}

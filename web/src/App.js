@@ -14,15 +14,16 @@ class App extends Component {
       center: [-12.4634, 130.8456],
       zoom: 13,
     },
-    // DEFAULT_VIEWPORT: {
-    //   center: [-12.4634, 130.8456],
-    //   zoom: 13,
-    // },
     markers: [],
+    dataSets: [
+      {name: "BBQ", csv: "BBX"},
+      {name: "Fountains", csv: "Fountains"},
+      {name: "Picnic Tables", csv: "PicnicTables"},
+    ]
   };
 
   componentDidMount() {
-    Papa.parse("http://localhost:3000/Barbeques.csv", {
+    Papa.parse("http://localhost:3000/csvOut/BBQ.csv", {
       download: true,
       header: true,
       complete: function(results) {
@@ -71,6 +72,7 @@ class App extends Component {
     return (
       <div className="App">
         <CoolMap
+          className="CoolMap"
           key={this.state.mapId}
           id={this.state.mapId}
           url={this.state.mapUrl}
@@ -82,8 +84,10 @@ class App extends Component {
           markers={this.state.markers}
         />
         <CoolMapMenu
+          className="CoolMapMenu"
           mapId={this.state.mapId}
           onMapToggle={this.handleMapToggle}
+          options={this.state.dataSets}
         />
       </div>
     );

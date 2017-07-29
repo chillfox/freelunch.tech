@@ -39,14 +39,14 @@ class CoolMap extends Component {
 
     const markers = this.props.markers.map((marker) => (
       <Marker
-        key={marker.Asset_ID}
-        position={[marker.Y, marker.X]}
+        key={marker.key}
+        id={marker.key}
+        position={[marker.Latitude, marker.Longitude]}
         icon={myicon}
       >
         <Popup>
           <span>
-            {marker.Location}<br/>
-            Size: {marker.Size}
+            {marker.Name}
           </span>
         </Popup>
       </Marker>
