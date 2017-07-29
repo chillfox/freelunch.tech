@@ -1,25 +1,46 @@
 import React, { Component } from 'react';
-// import logo from './logo.svg';
 import './App.css';
 import CoolMap from './CoolMap';
 import CoolMapMenu from './CoolMapMenu'
+import Papa from 'papaparse';
 
 class App extends Component {
   state = {
-    mapUrl: ""
+    mapId: "street",
+    mapUrl: "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+    // position: [-12.4634, 130.8456],
+    // zoom: 13,
+    viewport: {
+      center: [-12.4634, 130.8456],
+      zoom: 13,
+    },
+    // DEFAULT_VIEWPORT: {
+    //   center: [-12.4634, 130.8456],
+    //   zoom: 13,
+    // },
+    markers: [],
   };
 
   componentDidMount() {
-    this.setState({
-      mapId: "street",
-      mapUrl: "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png"
+    Papa.parse("http://localhost:3000/Barbeques.csv", {
+      download: true,
+      header: true,
+      complete: function(results) {
+        // console.log(results)
+        this.setState({markers: results.data});
+      }.bind(this)
     });
+
+    // this.setState({
+    //   mapId: "street",
+    //   mapUrl: "https://{s}.tile.opentopomap.org/{z}/{x}/{y}.png",
+    //   position: [-12.4634, 130.8456],
+    // });
   }
 
-  handleMapToggle = (mapId) => {
-    // console.log(mapId);
-    // console.log('toggle map');
 
+
+  handleMapToggle = (mapId) => {
     let id = "";
     let url = "";
     // http://{s}.tile.osm.org/{z}/{x}/{y}.png
@@ -38,19 +59,27 @@ class App extends Component {
     });
   };
 
+  // onViewportChanged = viewport => {
+  //   this.setState({viewport: viewport})
+  // };
+  //
+  // onClickReset = () => {
+  //   this.setState({ viewport: this.state.DEFAULT_VIEWPORT })
+  // };
+
   render() {
     return (
       <div className="App">
-        {/*<div className="App-header">*/}
-          {/*<img src={logo} className="App-logo" alt="logo" />*/}
-          {/*<h2>Welcome to React</h2>*/}
-        {/*</div>*/}
-        {/*<p className="App-intro">*/}
-          {/*To get started, edit <code>src/App.js</code> and save to reload.*/}
-        {/*</p>*/}
         <CoolMap
+          key={this.state.mapId}
           id={this.state.mapId}
           url={this.state.mapUrl}
+          // position={this.state.position}
+          // zoom={this.state.zoom}
+          viewport={this.state.viewport}
+          // onViewportChanged={this.onViewportChanged}
+          // onClickReset={this.onClickReset}
+          markers={this.state.markers}
         />
         <CoolMapMenu
           mapId={this.state.mapId}

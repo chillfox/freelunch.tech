@@ -13,8 +13,19 @@ import markerShadow from 'leaflet/dist/images/marker-shadow.png';
 import './CoolMap.css';
 
 class CoolMap extends Component {
+
+  // onViewportChanged = viewport => {
+  //   // console.log(viewport);
+  //   this.props.onViewportChanged(viewport)
+  // };
+
+  // onClickReset = () => {
+  //   // this.setState({ viewport: DEFAULT_VIEWPORT })
+  //   this.props.onClickReset()
+  // };
+
   render() {
-    const position = [-12.4634, 130.8456];
+    // const position = this.props.position;
 
     const myicon = L.icon({
       iconUrl: markerIcon,
@@ -26,17 +37,36 @@ class CoolMap extends Component {
       shadowAnchor: [10, 12]
     });
 
+    const markers = this.props.markers.map((marker) => (
+      <Marker
+        key={marker.Asset_ID}
+        position={[marker.Y, marker.X]}
+        icon={myicon}
+      >
+        <Popup>
+          <span>
+            {marker.Location}<br/>
+            Size: {marker.Size}
+          </span>
+        </Popup>
+      </Marker>
+    ));
+
+    // console.log(this.props);
+
     return (
-      <Map center={position} zoom={14}>
+      <Map
+        // center={this.props.position}
+        // zoom={this.props.zoom}
+        // onClick={this.onClickReset}
+        // onViewportChanged={this.onViewportChanged}
+        viewport={this.props.viewport}>
+      >
         <TileLayer
           url={this.props.url}
           // attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
-        <Marker position={position} icon={myicon}>
-          {/*<Popup>*/}
-            {/*<span>A pretty CSS3 popup.<br/>Easily customizable.</span>*/}
-          {/*</Popup>*/}
-        </Marker>
+        {markers}
       </Map>
     );
   }
