@@ -3,6 +3,8 @@ import React, { Component } from 'react';
 import 'semantic-ui-css/semantic.min.css';
 import { Input, Label, Menu } from 'semantic-ui-react'
 
+import './CoolMapMenu.css'
+
 class CoolMapMenu extends Component {
 
   // state = { activeItem: 'none' }
@@ -39,7 +41,9 @@ class CoolMapMenu extends Component {
     return (
       <div>
         <button onClick={this.handleMapToggle}>Toggle Map</button>
-        {menu}
+        <div id="MapMenu">
+          {menu}
+        </div>
       </div>
     );
   }

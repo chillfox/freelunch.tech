@@ -11,7 +11,7 @@ class App extends Component {
     // position: [-12.4634, 130.8456],
     // zoom: 13,
     viewport: {
-      center: [-12.4634, 130.8456],
+      center: [-12.42283024081249, 130.8456],
       zoom: 13,
     },
     markers: [],
@@ -79,7 +79,7 @@ class App extends Component {
   handleOptionClick = (activeOption) => {
     // console.log(activeOption)
     if (this.state.activeDataSet === activeOption) {
-      this.setState({markers: []})
+      this.setState({markers: [], activeDataSet: ""})
     } else {
       this.setState({markers: [], activeDataSet: activeOption})
       this.fetchDataSet(activeOption)

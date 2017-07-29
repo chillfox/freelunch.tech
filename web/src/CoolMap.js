@@ -14,10 +14,10 @@ import './CoolMap.css';
 
 class CoolMap extends Component {
 
-  // onViewportChanged = viewport => {
-  //   // console.log(viewport);
-  //   this.props.onViewportChanged(viewport)
-  // };
+  onViewportChanged = viewport => {
+    // console.log(viewport);
+    // this.props.onViewportChanged(viewport)
+  };
 
   // onClickReset = () => {
   //   // this.setState({ viewport: DEFAULT_VIEWPORT })
@@ -57,7 +57,7 @@ class CoolMap extends Component {
         // center={this.props.position}
         // zoom={this.props.zoom}
         // onClick={this.onClickReset}
-        // onViewportChanged={this.onViewportChanged}
+        onViewportChanged={this.onViewportChanged}
         viewport={this.props.viewport}>
       >
         <TileLayer

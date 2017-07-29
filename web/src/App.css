@@ -10,5 +10,6 @@
 }
 
 .CoolMapMenu {
-
+  /*align-items: stretch;*/
+  /*overflow-y: scroll;*/
 }
