@@ -15,20 +15,17 @@ class App extends Component {
       zoom: 13,
     },
     markers: [],
-    dataSets: [
-      {name: "BBQ", csv: "BBX"},
-      {name: "Fountains", csv: "Fountains"},
-      {name: "Picnic Tables", csv: "PicnicTables"},
-    ]
+    dataSets: [],
+    activeDataSet: "",
   };
 
   componentDidMount() {
-    Papa.parse("http://localhost:3000/csvOut/BBQ.csv", {
+    Papa.parse("http://localhost:3000/FilenameKey.csv", {
       download: true,
       header: true,
       complete: function(results) {
-        // console.log(results)
-        this.setState({markers: results.data});
+        console.log(results)
+        this.setState({dataSets: results.data});
       }.bind(this)
     });
 
@@ -39,6 +36,17 @@ class App extends Component {
     // });
   }
 
+  fetchDataSet(dataSetName) {
+    const url = "http://localhost:3000/csvOut/" + dataSetName + ".csv"
+    Papa.parse(url, {
+      download: true,
+      header: true,
+      complete: function(results) {
+        // console.log(results)
+        this.setState({markers: results.data});
+      }.bind(this)
+    });
+  }
 
 
   handleMapToggle = (mapId) => {
@@ -68,12 +76,23 @@ class App extends Component {
   //   this.setState({ viewport: this.state.DEFAULT_VIEWPORT })
   // };
 
+  handleOptionClick = (activeOption) => {
+    // console.log(activeOption)
+    if (this.state.activeDataSet === activeOption) {
+      this.setState({markers: []})
+    } else {
+      this.setState({markers: [], activeDataSet: activeOption})
+      this.fetchDataSet(activeOption)
+    }
+
+  };
+
   render() {
     return (
       <div className="App">
         <CoolMap
           className="CoolMap"
-          key={this.state.mapId}
+          key={this.state.mapId + "_" + this.state.activeDataSet}
           id={this.state.mapId}
           url={this.state.mapUrl}
           // position={this.state.position}
@@ -88,6 +107,8 @@ class App extends Component {
           mapId={this.state.mapId}
           onMapToggle={this.handleMapToggle}
           options={this.state.dataSets}
+          activeOption={this.state.activeDataSet}
+          handleOptionClick={this.handleOptionClick}
         />
       </div>
     );

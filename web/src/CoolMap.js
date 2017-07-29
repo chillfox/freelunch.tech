@@ -52,8 +52,6 @@ class CoolMap extends Component {
       </Marker>
     ));
 
-    // console.log(this.props);
-
     return (
       <Map
         // center={this.props.position}
@@ -66,7 +64,7 @@ class CoolMap extends Component {
           url={this.props.url}
           // attribution='&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
         />
-        {markers}
+        {this.props.markers.length ? markers : ""}
       </Map>
     );
   }

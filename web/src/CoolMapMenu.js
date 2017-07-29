@@ -5,21 +5,28 @@ import { Input, Label, Menu } from 'semantic-ui-react'
 
 class CoolMapMenu extends Component {
 
-  state = { activeItem: 'inbox' }
+  // state = { activeItem: 'none' }
 
-  handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  // handleItemClick = (e, { name }) => this.setState({ activeItem: name })
+  handleItemClick = (e, { name }) => this.props.handleOptionClick( name );
 
   handleMapToggle = () => {
     this.props.onMapToggle(this.props.mapId)
   };
 
   render() {
-    const { activeItem } = this.state
+    // const { activeItem } = this.state
 
     const menuOptions = this.props.options.map((option) => (
-      <Menu.Item name={option.csv} active={activeItem === option.csv} onClick={this.handleItemClick}>
-        <Label color='teal'>1</Label>
-        {option.name}
+      <Menu.Item
+        key={option.Filename}
+        id={option.Filename}
+        name={option.Filename}
+        active={this.props.activeOption === option.Filename}
+        onClick={this.handleItemClick}
+      >
+        <Label color='blue'>{option.Instances}</Label>
+        {option.DisplayName}
       </Menu.Item>
     ));
 

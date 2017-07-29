@@ -1,7 +1,7 @@
 {
   "name": "web",
   "version": "0.1.0",
-  "homepage": "http://freelunch.tech/leaflet_test/",
+  "homepage": "http://freelunch.tech/leaflet_map/",
   "private": true,
   "dependencies": {
     "font-awesome": "^4.7.0",
