@@ -41,7 +41,7 @@ class CoolMapMenu extends Component {
     return (
       <div>
         <button onClick={this.handleMapToggle}>Toggle Map</button>
-        <div id="MapMenu">
+        <div className="MapMenu">
           {menu}
         </div>
       </div>

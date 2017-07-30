@@ -1,0 +1,10 @@
+@media (min-width: 800px) {
+  .MapMenu {
+    overflow-y: scroll;
+    height: 100vh;
+  }
+}
+
+/*.MapMenu {*/
+  /*flex: 1;*/
+/*}*/

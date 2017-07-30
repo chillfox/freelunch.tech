@@ -1,0 +1,11 @@
+.leaflet-container {
+  align-items: stretch;
+  flex: 1;
+  flex-basis: 400px;
+}
+
+@media (max-width: 800px) {
+  .leaflet-container {
+    height: 80%;
+  }
+}

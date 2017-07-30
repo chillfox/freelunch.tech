@@ -1,0 +1,20 @@
+.App {
+  text-align: center;
+  display: flex;
+  flex-flow: row wrap;
+  height: 100vh;
+  width: 100vw;
+  /*justify-content: space-around;*/
+}
+
+.CoolMap {
+  /*flex: 1;*/
+  /*align-items: stretch;*/
+}
+
+.CoolMapMenu {
+  /*flex: 1;*/
+  /*flex-basis: 100px;*/
+  /*align-items: stretch;*/
+  /*overflow-y: scroll;*/
+}

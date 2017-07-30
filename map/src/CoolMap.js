@@ -58,7 +58,9 @@ class CoolMap extends Component {
         // zoom={this.props.zoom}
         // onClick={this.onClickReset}
         onViewportChanged={this.onViewportChanged}
-        viewport={this.props.viewport}>
+        viewport={this.props.viewport}
+        scrollWheelZoom={false}
+        // touchZoom={false}
       >
         <TileLayer
           url={this.props.url}
