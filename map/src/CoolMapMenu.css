@@ -5,6 +5,11 @@
   }
 }
 
+@media (max-width: 800px) {
+  .MapMenu {
+    width: 100vw;
+  }
+}
 /*.MapMenu {*/
   /*flex: 1;*/
 /*}*/

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 
 import 'semantic-ui-css/semantic.min.css';
-import { Input, Label, Menu } from 'semantic-ui-react'
+import { Button, Label, Menu } from 'semantic-ui-react'
 
 import './CoolMapMenu.css'
 
@@ -26,6 +26,7 @@ class CoolMapMenu extends Component {
         name={option.Filename}
         active={this.props.activeOption === option.Filename}
         onClick={this.handleItemClick}
+        fluid
       >
         <Label color='blue'>{option.Instances}</Label>
         {option.DisplayName}
@@ -33,15 +34,25 @@ class CoolMapMenu extends Component {
     ));
 
     const menu = (
-      <Menu vertical>
+      <Menu vertical fluid>
         {menuOptions}
       </Menu>
     );
 
     return (
       <div>
-        <button onClick={this.handleMapToggle}>Toggle Map</button>
-        <div className="MapMenu">
+        {/*<button onClick={this.handleMapToggle}>Toggle Map</button>*/}
+        <Button
+          fluid
+          primary
+          onClick={this.handleMapToggle}
+        >
+          Satelite / Street
+        </Button>
+        <div
+          className="MapMenu"
+          fluid
+        >
           {menu}
         </div>
       </div>

@@ -17,8 +17,8 @@ class App extends Component {
     markers: [],
     dataSets: [],
     activeDataSet: "",
-    // dataUrl: "/leaflet_map/",
-    dataUrl: "/"
+    dataUrl: "/leaflet_map/",
+    // dataUrl: "/"
   };
 
   componentDidMount() {
@@ -39,7 +39,7 @@ class App extends Component {
   }
 
   fetchDataSet(dataSetName) {
-    const url = this.state.dataUrl + "/csvOut/" + dataSetName + ".csv"
+    const url = this.state.dataUrl + "csvOut/" + dataSetName + ".csv"
     Papa.parse(url, {
       download: true,
       header: true,
