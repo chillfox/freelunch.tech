@@ -24,6 +24,8 @@ class CoolMap extends Component {
   //   this.props.onClickReset()
   // };
 
+  createMarkup(html) { return {__html: html}; };
+
   render() {
     // const position = this.props.position;
 
@@ -39,14 +41,16 @@ class CoolMap extends Component {
 
     const markers = this.props.markers.map((marker) => (
       <Marker
-        key={marker.key}
-        id={marker.key}
+        key={marker.Longitude + marker.Latitude}
+        // id={marker.Name}
         position={[marker.Latitude, marker.Longitude]}
         icon={myicon}
       >
         <Popup>
           <span>
-            {marker.Name}
+            {marker.Name}<br/>
+            <div dangerouslySetInnerHTML={this.createMarkup(marker.Hours)} />
+            {/*<div dangerouslySetInnerHTML={this.createMarkup(marker.Website)} />*/}
           </span>
         </Popup>
       </Marker>
@@ -54,6 +58,7 @@ class CoolMap extends Component {
 
     return (
       <Map
+        key={this.props.mapId}
         // center={this.props.position}
         // zoom={this.props.zoom}
         // onClick={this.onClickReset}
@@ -61,6 +66,7 @@ class CoolMap extends Component {
         viewport={this.props.viewport}
         scrollWheelZoom={false}
         // touchZoom={false}
+        maxZoom={17}
       >
         <TileLayer
           url={this.props.url}

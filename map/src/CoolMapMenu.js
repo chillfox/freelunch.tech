@@ -26,22 +26,22 @@ class CoolMapMenu extends Component {
         name={option.Filename}
         active={this.props.activeOption === option.Filename}
         onClick={this.handleItemClick}
-        fluid
       >
         <Label color='blue'>{option.Instances}</Label>
-        {option.DisplayName}
+        {option.DisplayName}<br/>
       </Menu.Item>
     ));
 
     const menu = (
-      <Menu vertical fluid>
+      <Menu vertical fluid attached>
         {menuOptions}
       </Menu>
     );
 
     return (
-      <div>
-        {/*<button onClick={this.handleMapToggle}>Toggle Map</button>*/}
+      <div
+        className="MapMenu"
+      >
         <Button
           fluid
           primary
@@ -49,12 +49,7 @@ class CoolMapMenu extends Component {
         >
           Satelite / Street
         </Button>
-        <div
-          className="MapMenu"
-          fluid
-        >
-          {menu}
-        </div>
+        {menu}
       </div>
     );
   }

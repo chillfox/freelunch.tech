@@ -17,8 +17,8 @@ class App extends Component {
     markers: [],
     dataSets: [],
     activeDataSet: "",
-    dataUrl: "/leaflet_map/",
-    // dataUrl: "/"
+    // dataUrl: "/leaflet_map/",
+    dataUrl: "/"
   };
 
   componentDidMount() {
@@ -26,7 +26,7 @@ class App extends Component {
       download: true,
       header: true,
       complete: function(results) {
-        console.log(results)
+        // console.log(results)
         this.setState({dataSets: results.data});
       }.bind(this)
     });
@@ -44,7 +44,7 @@ class App extends Component {
       download: true,
       header: true,
       complete: function(results) {
-        // console.log(results)
+        console.log(results)
         this.setState({markers: results.data});
       }.bind(this)
     });
