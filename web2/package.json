@@ -1,0 +1,7 @@
+{
+  "dependencies": {
+    "font-awesome": "^4.7.0",
+    "leaflet": "^1.1.0",
+    "leaflet.awesome-markers": "^2.0.4"
+  }
+}
