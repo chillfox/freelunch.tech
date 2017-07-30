@@ -43,7 +43,8 @@ class CoolMap extends Component {
       <Marker
         key={marker.Longitude + marker.Latitude}
         // id={marker.Name}
-        position={[marker.Latitude, marker.Longitude]}
+        // position={[marker.Latitude, marker.Longitude]}
+        position={L.latLng(marker.Latitude, marker.Longitude)}
         icon={myicon}
       >
         <Popup>

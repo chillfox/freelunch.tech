@@ -21,7 +21,7 @@ class CoolMapMenu extends Component {
 
     const menuOptions = this.props.options.map((option) => (
       <Menu.Item
-        key={option.Filename}
+        key={option.Filename + option.Instances}
         id={option.Filename}
         name={option.Filename}
         active={this.props.activeOption === option.Filename}
